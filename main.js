@@ -1,60 +1,37 @@
-// literal object
-
-const natalia = {
-    name: 'Natalia',
-    age: 20,
-    cursosAprobados: [
-        'Curso Definitivo de HTML y CSS',
-        'Curso Práctico de HTML y CSS',
-    ],
-    aprobarCurso(nuevoCurso) {
-        this.cursosAprobados.push(nuevoCurso)
-    },
-};
-
-// prototype
-
-function Student(name, age, cursosAprobados) {
-    this.name = name;
-    this.age = age;
-    this.cursosAprobados = cursosAprobados;
-}
-
-Student.prototype.aprobarCurso = function (nuevoCurso) {
-    this.cursosAprobados.push(nuevoCurso);
-}
-
-const juanita = new Student(
-    'Juanita Alejandra',
-    15,
-    [
-        'Curso de Introducción a la Producción de Videojuegos',
-        'Curso de Creación de Personajes',
-    ],
-);
-
-// Prototypes with classes syntax
-class Student2 {
+class Student {
     constructor({
         name,
-        age,
         email,
+        username,
+        twitter = undefined,
+        instagram = undefined,
+        facebook = undefined,
         approvedCourses = [],
+        learningPaths = [],
     }) {
         this.name = name;
         this.email = email;
-        this.age = age;
+        this.username = username;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            facebook,
+        }
         this.approvedCourses = approvedCourses;
-
-    }
-
-    approveCourse(newCourse) {
-        this.approvedCourses.push(newCourse);
+        this.learningPaths = learningPaths;
     }
 }
 
-const miguelito = new Student2({
-    email: 'miguelito@platzi.com',
-    age: 28,
-    name: 'Miguel',
+const jona2 = new Student({
+    name: 'Jonathan Meixueiro',
+    username: 'JonaMx13',
+    email: 'jonathan@meixueiro.com',
+    twitter: 'jonamx13',
+});
+
+const miguelito = new Student({
+    name: 'Miguelito',
+    username: 'chanchitofeliz',
+    email: 'miguelito@miguelon.com',
+    instagram: 'miguelito_chanchito',
 });
