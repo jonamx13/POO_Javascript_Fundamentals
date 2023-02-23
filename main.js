@@ -18,9 +18,6 @@ function Student(name, age, cursosAprobados) {
     this.name = name;
     this.age = age;
     this.cursosAprobados = cursosAprobados;
-    // this.aprobarCurso = function (nuevoCurso) {
-    //     this.cursosAprobados.push(nuevoCurso);
-    // }
 }
 
 Student.prototype.aprobarCurso = function (nuevoCurso) {
@@ -35,3 +32,29 @@ const juanita = new Student(
         'Curso de Creación de Personajes',
     ],
 );
+
+// Prototypes with classes syntax
+class Student2 {
+    constructor({
+        name,
+        age,
+        email,
+        approvedCourses = [],
+    }) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.approvedCourses = approvedCourses;
+
+    }
+
+    approveCourse(newCourse) {
+        this.approvedCourses.push(newCourse);
+    }
+}
+
+const miguelito = new Student2({
+    email: 'miguelito@platzi.com',
+    age: 28,
+    name: 'Miguel',
+});
