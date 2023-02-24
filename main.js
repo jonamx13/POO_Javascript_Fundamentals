@@ -83,3 +83,112 @@ const miguelito = new Student({
         escuelaData,
     ],
 });
+
+
+// Challenge 
+
+/*
+*   With the given class:
+?   Band Class with the properties:
+    · name - string
+    · genres - Array
+    · members - Array
+
+   TODO: create a class named 'Member' with the properties:
+   · name - string
+   · instrument - string
+
+*   Write the logic to add a member to the class *Band*
+*   into the function *addMember*.
+!   This function mustn't let add more than one drummer, 
+!   so it has to validate that it can only add just one member with the
+?   drums //!instrument.
+
+    TODO: Solution should have the following input and output
+
+    ?Input:
+    const data = {
+    name: "The Jacks",
+    genres: ["rock", "pop", "post-punk"],
+    members: [],
+    }
+    const band = new Band(data)
+    band.addMember(new Member({ name: "Erik", instrument: "Guitar" }))
+    banda.addMember(new Member({ name: "Paul", instrument: "Drums" }))
+
+    ?Output:
+    {
+    "name":"The Jacks",
+    "genres":["rock","pop","post-punk"],
+    "members":[
+        {"name":"Erik","instrument":"Guitar"},
+        {"name":"Paul","instrumento":"Drums"}
+    ]}
+*/
+
+// Band Class
+class Band {
+    constructor({
+      name,
+      genres = [],
+    }) {
+      this.name = name;
+      this.genres = genres;
+      this.members = [];
+    }
+    addMember(newMember) {
+        const bandHasDrummer = this.members.some(o => o.instrument == 'Drums');
+        const newMemberIsDrummer = Object.values(newMember).includes('Drums');
+
+        if(bandHasDrummer && newMemberIsDrummer) {
+            console.log('We already have a drummer');
+            return;
+        }
+
+      this.members.push(newMember);
+  
+    }
+  }
+  
+  //Create Member Class
+  class Member {
+    #capitalizeFirstLetter(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+    constructor({
+      name,
+      instrument,
+    }) {
+      this.name = this.#capitalizeFirstLetter(name);
+      this.instrument = this.#capitalizeFirstLetter(instrument);
+    }
+  }
+  
+  
+  //? Input
+  const data = {
+    name: "The Jacks",
+    genres: ["rock", "pop", "post-punk"],
+    members: [],
+  };
+
+  const band = new Band(data)
+
+  band.addMember(new Member({ name: "Erik", instrument: "Guitar" }));
+  
+  band.addMember(new Member({ name: "Paul", instrument: "Drums" }));
+
+  //!Testing correct format for names
+  band.addMember(new Member({ name: "bILl", instrument: "baSs" }));
+
+  //!Testing to reject another drummer with upper and lower case variations
+  band.addMember(new Member({ name: "Dyson", instrument: "drUmS" }));
+
+console.table(band);
+console.table(band.members);
+console.table(band.members);
+
+let randomMember = new Member({ name: "Dyson", instrument: "drUmS" });
+
+//? capitalizeFirstLetter() method not accesible outside class Member
+randomMember.capitalizeFirstLetter();
