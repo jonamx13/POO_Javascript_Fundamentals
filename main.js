@@ -1,3 +1,56 @@
+class Course {
+    constructor({
+        name,
+        classes = [],
+    }) {
+        this.name = name;
+        this.classes = classes;
+    }
+}
+const cursoProgBasica = new Course({
+    name: 'Curso Gratis de Programación Básica',
+    classes: [],
+});
+
+const cursoDefinitivoHTML = new Course({
+    name: 'Curso Definitivo de HTML y CSS',
+    courses: [],
+});
+
+const cursoPracticoHTML = new Course({
+    name: 'Curso Práctico de HTML y CSS',
+    classes: [],
+});
+
+const cursoIntroDePython = new Course({
+    name:'Curso Introductorio de Python',
+    classes:[],
+});
+
+const cursoBasicoMySQL = new Course({
+    name: 'Curso Básico de MySQL',
+    classes: []
+});
+
+const cursoAnalisisDatosPython = new Course({
+    name: 'Curso de Análisis de Datos con Python',
+    classes: [],
+});
+
+const cursoIntroDevJuegos = new Course({
+    name: 'Curso Introductorio al Desarrollo de Videojuegos',
+    classes: [],
+});
+const cursoDisenoPersonajes = new Course({
+    name: 'Curso de Diseño de Personajes',
+    classes: []
+})
+const cursoCSharpUnity = new Course({
+    name: 'Curso de C# para Unity',
+    classes: [],
+})
+        
+
 class LearningPaths {
     constructor({
         pathName,
@@ -12,9 +65,9 @@ const escuelaWeb = new LearningPaths({
     pathName: 'Escuela de Desarrollo web',
     
     courses: [
-        'Curso Definitivo de HTML y CSS',
-        'Curso Práctico de HTML y CSS',
-        'Curso de Frontend Developer',
+        cursoProgBasica,
+        cursoDefinitivoHTML,
+        cursoPracticoHTML,
     ],
 });
 
@@ -22,9 +75,9 @@ const escuelaData = new LearningPaths({
     pathName: 'Escuela de Data Science',
     
     courses: [
-        'Curso Introductorio de Python',
-        'Curso Básico de MySQL',
-        'Curso de Análisis de Datos con Python',
+        cursoIntroDePython,
+        cursoBasicoMySQL,
+        cursoAnalisisDatosPython,
     ],
 });
 
@@ -32,9 +85,9 @@ const escuelaVgs = new LearningPaths({
     pathName: 'Escuela de Videojuegos',
     
     courses: [
-        'Curso Introductorio al Desarrollo de Videojuegos',
-        'Curso de Diseño de Personajes',
-        'Curso de C# para Unity'
+        cursoIntroDevJuegos,
+        cursoDisenoPersonajes,
+        cursoCSharpUnity,
     ],
 });
 
