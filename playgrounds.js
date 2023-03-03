@@ -12,12 +12,9 @@ class Course {
     }
   
     set name(newName) {
-        if( typeof newName !== 'string' ) {
-            console.error('You must enter a string value');
-        } else {
-            
-            this._name = newName.charAt(0).toUpperCase() + newName.slice(1).toLowerCase();
-        }
+        typeof newName !== 'string'
+        ? console.error('You must enter a string value')
+        : this._name = newName.charAt(0).toUpperCase() + newName.slice(1).toLowerCase();
     }
   }
 
