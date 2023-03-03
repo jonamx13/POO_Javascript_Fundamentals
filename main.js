@@ -3,14 +3,36 @@ class Course {
         name,
         classes = [],
     }) {
-        this.name = name;
+        this._name = name; // convention to indicate that a method is private
         this.classes = classes;
     }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(newName) {
+        if (newName === 'Curso Malo de Programación Básica') {
+            console.error('Wey... noooooo!!!!')
+        } else {
+            this._name = newName;
+        }
+    }
+    /* changeName(newName) {
+        this._name = newName
+    } */
 }
+
 const cursoProgBasica = new Course({
     name: 'Curso Gratis de Programación Básica',
     classes: [],
 });
+
+/*
+cursoProgBasica._name = "";
+cursoProgBasica.changeName('New name')
+*/
+// Curso Gratis de Programación Básica
 
 const cursoDefinitivoHTML = new Course({
     name: 'Curso Definitivo de HTML y CSS',
