@@ -1,3 +1,32 @@
+function videoPlay(id) {
+    const secretURL = 'https://platziultrasecretomasquelanasa.com/' + id;
+    console.log('Se está reproduciendo la url ' + secretURL);
+}
+
+function videoStop(id) {
+    const secretURL = 'https://platziultrasecretomasquelanasa.com/' + id;
+    console.log('Pausamos la url ' + secretURL);
+}
+
+export class PlatziClass {
+    constructor({
+        name,
+        videoID,
+    }) {
+        this.name = name;
+        this.videoID = videoID;
+    }
+
+    play() {
+        videoPlay(this.videoID)
+    }
+
+    pause() {
+        videoStop(this.videoID);
+    }
+}
+
+
 class Course {
     constructor({
         name,
@@ -266,4 +295,4 @@ console.table(band.members);
 let randomMember = new Member({ name: "Dyson", instrument: "drUmS" });
 
 //? capitalizeFirstLetter() method not accesible outside class Member
-randomMember.capitalizeFirstLetter();
+// randomMember.capitalizeFirstLetter();
