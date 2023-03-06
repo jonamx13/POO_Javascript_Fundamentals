@@ -8,7 +8,7 @@ function videoStop(id) {
     console.log('Pausamos la url ' + secretURL);
 }
 
-export class PlatziClass {
+class PlatziClass {
     constructor({
         name,
         videoID,
@@ -31,9 +31,13 @@ class Course {
     constructor({
         name,
         classes = [],
+        isFree = false,
+        lang = 'Spanish',
     }) {
         this._name = name; // convention to indicate that a method is private
         this.classes = classes;
+        this.isFree = isFree;
+        this.lang = lang;
     }
 
     get name() {
@@ -55,6 +59,8 @@ class Course {
 const cursoProgBasica = new Course({
     name: 'Curso Gratis de Programación Básica',
     classes: [],
+    isFree: true,
+
 });
 
 /*
@@ -71,6 +77,7 @@ const cursoDefinitivoHTML = new Course({
 const cursoPracticoHTML = new Course({
     name: 'Curso Práctico de HTML y CSS',
     classes: [],
+    lang: 'English',
 });
 
 const cursoIntroDePython = new Course({
@@ -142,6 +149,10 @@ const escuelaVgs = new LearningPaths({
     ],
 });
 
+
+
+
+
 class Student {
     constructor({
         name,
@@ -166,7 +177,50 @@ class Student {
     }
 }
 
-const jona2 = new Student({
+
+class FreeStudent extends Student {
+
+    constructor(props) {
+        super(props); // calls  the parent's constructor
+    }
+
+
+    approveCourse(newCourse) {
+        if (newCourse.isFree) {
+            this.approvedCourses.push(newCourse);
+        } else {
+            console.warn(`We're sorry ${this.name}, you can only attend open courses with your subscription`);
+        }
+    }
+}
+
+class BasicStudent extends Student {
+    constructor(props) {
+        super(props);
+    }
+
+    approveCourse(newCourse) {
+        if (newCourse.lang !== 'English') {
+            this.approvedCourses.push(newCourse);
+        } else {
+            console.warn(`We're sorry ${this.name}, you can only attend 'Spanish courses' with your subscription.`);
+        }
+    }
+}
+
+class ExpertStudent extends Student {
+    constructor(props) {
+        super(props);
+    }
+
+    approveCourse(newCourse) {
+        this.approvedCourses.push(newCourse);
+    }
+}
+
+
+
+const jona2 = new FreeStudent({
     name: 'Jonathan Meixueiro',
     username: 'JonaMx13',
     email: 'jonathan@meixueiro.com',
@@ -177,7 +231,7 @@ const jona2 = new Student({
     ],
 });
 
-const miguelito = new Student({
+const miguelito = new BasicStudent({
     name: 'Miguelito',
     username: 'chanchitofeliz',
     email: 'miguelito@miguelon.com',
