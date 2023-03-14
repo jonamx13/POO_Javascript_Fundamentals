@@ -43,7 +43,7 @@ class TeacherStudent extends Student {
       const comment = new Comment({
         content: commentContent,
         studentName: this.name,
-        studentRole: `profesor de ${skills}`
+        studentRole: `profesor de ${skills.join(', ')}`
       });
       return comment.publicar();
     }
